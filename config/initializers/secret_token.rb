@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Qrserve::Application.config.secret_token = 'bcd21f61fb238ef78a0592dfab7ea691481e7df4b1073e9ea1a8b6ed4857c431f7d7319d9f0860bbbf46772746f931cf09a5b5691d653c7c41c252d237df2a01'
+Qrserve::Application.config.secret_token = 'c13a284cf0f5e67a0d5c60f1091910bb227c8f9add9531b38a6799a90d26cec4b97e0665587b8113821f8bf7de47eb8be15277412635d48ddb74c78a36ce7095'
