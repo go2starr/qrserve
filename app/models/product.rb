@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
 
+  # Relational
+  has_many :line_items
+
   # Validations
   validates(:title, 
             :presence => true,
@@ -8,6 +11,9 @@ class Product < ActiveRecord::Base
             :presence => true)
   validates(:price,
             :numericality => { :greater_than_or_equal_to => 0.01 })              
+  
+  # Default ordering
+  default_scope :order => 'title'
             
   
 end

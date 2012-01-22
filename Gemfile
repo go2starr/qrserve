@@ -5,6 +5,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'rake', '0.8.7'
 
 gem 'rdoc'
+gem 'rb-readline'
 
 group :development do
   gem 'rspec-rails', '2.0.1'

@@ -1,0 +1,7 @@
+require 'spec_helper'
+
+describe LineItem do
+  it "should have an associated product" do
+    LineItem.should respond_to :product
+  end
+end
