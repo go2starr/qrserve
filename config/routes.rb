@@ -1,4 +1,6 @@
 Qrserve::Application.routes.draw do
+  get "users/new"
+
   get "store/index"
 
   resources :products

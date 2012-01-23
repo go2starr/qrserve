@@ -1,3 +1,11 @@
+# User model
+Factory.define :user do |user|
+  user.name     "Mike Starr"
+  user.email    "go2starr@gmail.com"
+  user.password "password"
+  user.password_confirmation "password"
+end
+
 
 # Product model
 Factory.sequence :title do |n|

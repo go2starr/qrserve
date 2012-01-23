@@ -1,0 +1,68 @@
+require 'spec_helper'
+
+describe User do
+
+  before :each do
+    @attr = {
+      :name => "Example user",
+      :email => "go2starr@example.com"
+    }
+  end
+
+  it "should create a new instance given valid attributes" do
+    User.create! @attr
+  end
+
+  describe "names" do
+    it "should require a name" do
+      no_name_user = User.new @attr.merge :name => ""
+      no_name_user.should_not be_valid
+    end
+
+    it "should not be too long" do
+      long_name_user = User.new @attr.merge :name => 'a'*51
+      long_name_user.should_not be_valid
+    end
+  end
+  
+  describe "email" do
+    it "should require an email" do
+      no_email_user = User.new @attr.merge :email => ""
+      no_email_user.should_not be_valid
+    end
+
+    it "should accept valid email addresses" do
+      addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
+      addresses.each do |address|
+        valid_email_user = User.new @attr.merge :email => address
+        valid_email_user.should be_valid
+      end
+    end
+
+    it "should reject invalid email addresses" do
+      addresses = %w[@foo.com THE_USER@ @ . foo.com foo@the example.user@foo.]
+      addresses.each do |address|
+        invalid_email_user = User.new @attr.merge :email => address
+        invalid_email_user.should_not be_valid
+      end
+    end
+
+    it "should reject duplicate emails up to case" do
+      User.create! @attr.merge :email => @attr[:email].upcase
+      duplicate_email_user = User.new @attr
+      duplicate_email_user.should_not be_valid
+    end      
+  end
+end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  email      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

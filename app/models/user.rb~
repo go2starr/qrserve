@@ -1,0 +1,30 @@
+class User < ActiveRecord::Base
+
+  # Access control
+  attr_accessible :name, :email
+
+  # Validations
+  validates(:name, 
+            :length => { :within => 1..50 })
+
+  email_regex = /\A[\w\-.]+@([\w\-]+\.)+\w+\z/i
+  validates(:email,
+            :presence => true,
+            :format => { :with => email_regex },
+            :uniqueness => { :case_sensitive => false }
+            )
+
+
+end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  email      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
