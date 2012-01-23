@@ -1,17 +1,15 @@
 <h1>Store</h1>
 
-<table>
-  <td>
-    <strong>Title</strong>
-  </td>
-  <td>
-    <strong>Description</strong>
-  </td>
-  <td>
-    <strong>Price</strong>
-  </td>
+<%= render @cart %>
 
-  <%= render @products %>
 
-</table>
+<% @products.each do |product| %>
+<div class="entry">
+  <h3><%= product.title %></h3>
+  <div class="price_line">
+    <span class="price"><%= number_to_currency(product.price) %></span>
+    <%= button_to 'Add to Cart', line_items_path(:product_id => product) %>
+  </div>
+</div>
+<% end %>
 

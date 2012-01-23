@@ -1,0 +1,11 @@
+<h1>
+  Cart
+</h1>
+
+<table>
+
+<% @cart.line_items.each do |line_item| %>
+<%= render line_item %>
+<% end %>
+
+</table>

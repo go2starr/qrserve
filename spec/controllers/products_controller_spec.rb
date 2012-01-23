@@ -4,12 +4,6 @@ describe ProductsController do
 
   before :each do
     @product = Factory :product
-
-    @attr = {
-      :title => @product.title,
-      :description => @product.description,
-      :price => @product.price
-    }
   end
 
   describe "GET index" do
@@ -62,101 +56,67 @@ describe ProductsController do
 
   describe "POST create" do
 
-    describe "with valid params" do
-      xit "assigns a newly created product as @product" do
+    before :each do
+      @attr = {
+        :title => "Product title",
+        :description => "Product description",
+        :price => 10.50
+      }
+    end
+
+    describe "success" do
+      
+      it "should create a product" do
+        lambda do
+          post :create, :product => @attr
+        end.should change Product, :count
+      end
+        
+      it "should redirect to the product show page" do
         post :create, :product => @attr
-        assigns(:product).should equal(@product)
+        response.should redirect_to product_path assigns :product
+      end
+    end
+
+    describe "failure" do
+      before :each do
+        @attr[:title] = ""
+      end
+      
+      it "should not create a product" do
+        lambda do
+          post :create, :product => @attr
+        end.should_not change Product, :count
       end
 
-      xit "redirects to the created product" do
-        post :create, :product => @attr
-        
+      it "should render the 'new' page" do
+        post :create, :user => @attr
+        response.should render_template 'new'
       end
     end
   end
 
-  # describe "POST create" do
+  describe "PUT update" do
+    describe "with valid params" do
+      xit "should update the product" do
+      end
+    end
+    
+    describe "with invalid params" do
+      xit "should not change the product"
+    end
+  end
 
-  #   describe "with valid params" do
-  #     it "assigns a newly created product as @product" do
-  #       Product.stub(:new).with({'these' => 'params'}) { mock_product(:save => true) }
-  #       post :create, :product => {'these' => 'params'}
-  #       assigns(:product).should be(mock_product)
-  #     end
+  describe "DELETE destroy" do
+    it "should delete the product" do
+      lambda do
+        delete :destroy, :id => @product.id
+      end.should change Product, :count
+    end
 
-  #     it "redirects to the created product" do
-  #       Product.stub(:new) { mock_product(:save => true) }
-  #       post :create, :product => {}
-  #       response.should redirect_to(product_url(mock_product))
-  #     end
-  #   end
-
-  #   describe "with invalid params" do
-  #     it "assigns a newly created but unsaved product as @product" do
-  #       Product.stub(:new).with({'these' => 'params'}) { mock_product(:save => false) }
-  #       post :create, :product => {'these' => 'params'}
-  #       assigns(:product).should be(mock_product)
-  #     end
-
-  #     it "re-renders the 'new' template" do
-  #       Product.stub(:new) { mock_product(:save => false) }
-  #       post :create, :product => {}
-  #       response.should render_template("new")
-  #     end
-  #   end
-
-  # end
-
-  # describe "PUT update" do
-
-  #   describe "with valid params" do
-  #     it "updates the requested product" do
-  #       Product.should_receive(:find).with("37") { mock_product }
-  #       mock_product.should_receive(:update_attributes).with({'these' => 'params'})
-  #       put :update, :id => "37", :product => {'these' => 'params'}
-  #     end
-
-  #     it "assigns the requested product as @product" do
-  #       Product.stub(:find) { mock_product(:update_attributes => true) }
-  #       put :update, :id => "1"
-  #       assigns(:product).should be(mock_product)
-  #     end
-
-  #     it "redirects to the product" do
-  #       Product.stub(:find) { mock_product(:update_attributes => true) }
-  #       put :update, :id => "1"
-  #       response.should redirect_to(product_url(mock_product))
-  #     end
-  #   end
-
-  #   describe "with invalid params" do
-  #     it "assigns the product as @product" do
-  #       Product.stub(:find) { mock_product(:update_attributes => false) }
-  #       put :update, :id => "1"
-  #       assigns(:product).should be(mock_product)
-  #     end
-
-  #     it "re-renders the 'edit' template" do
-  #       Product.stub(:find) { mock_product(:update_attributes => false) }
-  #       put :update, :id => "1"
-  #       response.should render_template("edit")
-  #     end
-  #   end
-
-  # end
-
-  # describe "DELETE destroy" do
-  #   it "destroys the requested product" do
-  #     Product.should_receive(:find).with("37") { mock_product }
-  #     mock_product.should_receive(:destroy)
-  #     delete :destroy, :id => "37"
-  #   end
-
-  #   it "redirects to the products list" do
-  #     Product.stub(:find) { mock_product }
-  #     delete :destroy, :id => "1"
-  #     response.should redirect_to(products_url)
-  #   end
-  # end
-
+    it "redirects to the products list" do
+      delete :destroy, :id => @product.id
+      response.should redirect_to products_url
+    end
+  end
 end
