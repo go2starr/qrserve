@@ -1,4 +1,5 @@
 class StoreController < ApplicationController
+  include SessionsHelper
 
   # GET /
   def index

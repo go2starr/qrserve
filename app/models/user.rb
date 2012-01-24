@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   attr_accessor   :password
   attr_accessible :name, :email, :password, :password_confirmation
 
+  # Relational
+  has_one :cart
+
   # Validations
   validates(:name, 
             :length => { :within => 1..50 })
