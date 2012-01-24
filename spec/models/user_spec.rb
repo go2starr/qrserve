@@ -113,7 +113,7 @@ describe User do
 
         it "should return the user on email/password match" do
           user = User.authenticate @attr[:email], @attr[:password]
-          user.should be_valid
+          user.should == @user
         end
       end
     end
