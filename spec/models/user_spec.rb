@@ -7,14 +7,14 @@ describe User do
       :name => "Example user",
       :email => "go2starr@example.com",
       :password => "password",
-      :password_confirmation => "password"
+      :password_confirmation => "password",
     }
   end
 
   it "should create a new instance given valid attributes" do
     User.create! @attr
   end
-
+  
   describe "names" do
     it "should require a name" do
       no_name_user = User.new @attr.merge :name => ""

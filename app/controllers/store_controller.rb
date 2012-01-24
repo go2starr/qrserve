@@ -3,8 +3,11 @@ class StoreController < ApplicationController
 
   # GET /
   def index
-    @cart = current_cart
-    @products = Product.all
+    if signed_in?
+      @cart = current_user.cart
+      @products = Product.all
+    else
+      redirect_to signin_path
+    end
   end
-
 end

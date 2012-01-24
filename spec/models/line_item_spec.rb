@@ -42,7 +42,7 @@ describe LineItem do
       @line_item.cart.should == @cart
     end
 
-    xit "should be destroyed if its cart is destroyed" do
+    it "should be destroyed if its cart is destroyed" do
       lambda do
         @cart.delete
       end.should change LineItem, :count

@@ -24,9 +24,17 @@ class User < ActiveRecord::Base
             :length => { :within => 6..40}
             )
 
+  validates(:cart,
+            :presence => true)
+  
   # DB access
   before_save :encrypt_password
 
+  def initialize(attributes = nil)
+    super(attributes)
+    self.cart = Cart.new
+    self.cart.build :user => self
+  end
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -38,8 +46,8 @@ class User < ActiveRecord::Base
     return user if user.has_password? submitted_password
   end
 
-
   private
+
 
   def encrypt_password
     self.salt = make_salt if new_record?

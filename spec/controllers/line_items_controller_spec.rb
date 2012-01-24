@@ -10,15 +10,19 @@ describe LineItemsController do
   end
   
   describe "POST create" do
+    before :each do
+      test_sign_in Factory :user
+    end
+
     it "should create a lineitem" do
       lambda do
         post :create, @attr
       end.should change LineItem, :count
     end
 
-    it "should assign @cart" do
+    it "should assign @cart the users cart" do
       post :create, @attr
-      assigns(:cart).class.should be Cart
+      assigns(:cart).should == controller.current_user.cart
     end
 
     it "should assign the cart to the line item" do
@@ -47,21 +51,6 @@ describe LineItemsController do
       lambda do
         delete :destroy, :id => @line_item
       end.should change LineItem, :count
-    end
-  end
-
-  describe "current_cart method" do
-    describe "when no cart has been created for this session" do
-      before :each do
-        post :create, @attr
-      end
-
-      it "should assign a new cart" do
-        assigns(:cart).class.should be Cart
-      end
-
-      xit "should assign the session[:current_cart]" do
-      end
     end
   end
 end

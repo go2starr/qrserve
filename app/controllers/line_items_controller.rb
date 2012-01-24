@@ -1,4 +1,7 @@
 class LineItemsController < ApplicationController
+
+  include SessionsHelper
+
   # GET /line_items
   # GET /line_items.xml
   def index
@@ -29,7 +32,7 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.xml
   def create
-    @cart = current_cart
+    @cart = current_user.cart
     product = Product.find(params[:product_id])
     @line_item = @cart.line_items.build :product => product
 
