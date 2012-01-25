@@ -16,7 +16,7 @@ describe StoreController do
       end
       
       it "should assign all products to @products" do
-        10.times { Factory :product, :title => (Factory.next :title) }
+        10.times { Factory :product }
         get :index
         assigns(:products).should == Product.all
       end

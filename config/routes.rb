@@ -1,5 +1,7 @@
 Qrserve::Application.routes.draw do
 
+  resources :orders
+
   resources :users
   resources :products
   resources :line_items

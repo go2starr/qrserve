@@ -1,2 +1,7 @@
+<h1> Price: <%= @cart.total.to_s %> </h1>
 <%= render @cart %>
-<%= render :template => 'qr/qr' %>
+
+<%= button_to 'Accept', orders_path(:order => { :cart_id => @cart, :user_id => @user }) %>
+
+
+

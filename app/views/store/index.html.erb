@@ -1,6 +1,23 @@
 <h1>Store</h1>
 
+<!-- YUCKY -->
+<style type="text/css">
+div.inline { float:left; }
+.clearBoth { clear:both; }
+</style>
+<!-- YUCKY -->
+
+<div>
+
+<div class="inline">
 <%= render @cart %>
+</div>
+
+<div class="inline">
+<%= render :template => '/qr/qr' %>
+</div>
+
+<p></p>
 
 <% @products.each do |product| %>
 <div class="entry">

@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'spork'
 
+eval IO.read(File.expand_path(File.dirname(__FILE__) + "/../Rakefile"))
+
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However, 
   # if you change any configuration or code from libraries loaded here, you'll
@@ -31,6 +33,8 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
+
+  Rake::Task["db:reset"].invoke
   
 end
 
