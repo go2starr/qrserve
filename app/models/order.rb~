@@ -1,0 +1,19 @@
+class Order < ActiveRecord::Base
+  
+  # Relational
+  belongs_to :user
+  belongs_to :cart
+
+end
+
+# == Schema Information
+#
+# Table name: orders
+#
+#  id         :integer         not null, primary key
+#  cart_id    :integer
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
