@@ -1,13 +1,24 @@
 require 'spec_helper'
 
-
-
 describe Order do
   
   describe "cart" do
-    it "should require a cart" do
-      @order = Order.new
+    before :each do
+      @cart = Factory :cart
+      @attr = {
+        :cart_id => @cart
+      }
+    end
+
+    it "should be required" do
+      @order = Order.new @attr.merge :cart_id => nil
       @order.should_not be_valid
+    end
+
+    it "should be unique" do
+      @order = Order.create! @attr
+      @dup = Order.new @attr
+      @dup.should_not be_valid
     end
   end
 
@@ -17,10 +28,6 @@ describe Order do
       @order.complete?.should be_true
     end
   end
-
-  
-      
-
   
 end
 

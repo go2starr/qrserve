@@ -25,7 +25,13 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
 
     if @order.save
-      redirect_to(@order, :notice => 'Order was successfully created.')
+      
+      # Assign a new cart to the creator
+      @cart = Cart.create!
+      @owner = @order.cart.user
+      @owner.cart = @cart
+
+      redirect_to @order.user
     else
       render :action => "new"
     end

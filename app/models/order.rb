@@ -5,8 +5,9 @@ class Order < ActiveRecord::Base
   belongs_to :cart
 
   # Validations
-  validates(:cart,
-            :presence => true)
+  validates(:cart_id,
+            :presence => true,
+            :uniqueness => true)
             
 
   def complete?

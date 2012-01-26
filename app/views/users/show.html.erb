@@ -1,2 +1,10 @@
 <h1> Name: <%= @user.name %> </h1>
 <h2> Email: <%= @user.email %> </h2>
+
+<h1> Orders: </h1>
+
+<% @user.orders.each do |order| %>
+
+<%= render order %>
+
+<% end %>
