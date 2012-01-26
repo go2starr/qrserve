@@ -19,7 +19,7 @@ module SessionsHelper
   end
 
   def current_cart
-    @current_user.cart
+    current_user.cart
   end
 
   def signed_in?
