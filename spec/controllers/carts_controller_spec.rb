@@ -39,7 +39,7 @@ describe CartsController do
 
       it "should display the @cart total" do
         get :show, :id => @cart
-        response.should have_selector('h1', :content => @cart.total.to_s)
+        response.should have_selector("h2", :content => @cart.total.to_s)
       end
     end
   end
