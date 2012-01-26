@@ -1,0 +1,10 @@
+<div>
+  <h3> Order: <%= order.id %> </h3>
+  <h4> Total: <%= order.cart.total %> </h4>
+  <% order.cart.line_items.product.each do |product| %>
+
+  <span>
+  <%= render product %>
+  </span>
+  <% end %>
+</end>
