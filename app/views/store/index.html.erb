@@ -1,31 +1,14 @@
 <h1>Store</h1>
 
-<!-- YUCKY -->
-<style type="text/css">
-div.inline { float:left; }
-.clearBoth { clear:both; }
-</style>
-<!-- YUCKY -->
 
-<div>
-
-<div class="inline">
+<div class="cart">
 <%= render @cart %>
 </div>
 
-<div class="inline">
+<div class="products">
+  <%= render :template => '/store/product_listing' %>
+</div>
+
+<div class="qr">
 <%= render :template => '/qr/qr' %>
 </div>
-
-<p></p>
-
-<% @products.each do |product| %>
-<div class="entry">
-  <h3><%= product.title %></h3>
-  <div class="price_line">
-    <span class="price"><%= number_to_currency(product.price) %></span>
-    <%= button_to 'Add to Cart', line_items_path(:product_id => product) %>
-  </div>
-</div>
-<% end %>
-
