@@ -1,7 +1,5 @@
 class CartsController < ApplicationController
-
   include SessionsHelper
-
   protect_from_forgery
 
   def show
@@ -15,8 +13,6 @@ class CartsController < ApplicationController
     end    
   end
 
-
 private
-
 
 end

@@ -1,4 +1,6 @@
-<h1> Price: <%= @cart.total.to_s %> </h1>
+<h1>Confirm order</h1>
+<h2> Price: <%= @cart.total.to_s %> </h2>
+
 <%= render @cart %>
 
 <%= button_to 'Accept', orders_path(:order => { :cart_id => @cart, :user_id => @user }) %>
