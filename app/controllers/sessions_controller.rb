@@ -15,10 +15,7 @@ class SessionsController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to user }
-        format.mobile { redirect_to root_path }
-        format.js { redirect_to root_path }
-        format.ajax { redirect_to root_path }
-        format.xhr { redirect_to root_path }
+        format.js
       end
     end    
   end

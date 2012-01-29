@@ -1,3 +1,5 @@
-$.jQTouch({
-  formSelector: '.form'
+var jQT = new $.jQTouch({
+
 });
+
+

@@ -1,17 +1,19 @@
 
-<%= form_for :session, :url => sessions_path do |f| %>
-<div class="field">
-  <%= f.label :email %><br />
-  <%= f.text_field :email %><br />
-</div>
-<div class="field">
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-</div>
-<div class="actions">
-  <%= f.submit "Sign in" %>
-</div>
-<% end %>
+<%= form_for :session, :url => sessions_path, :remote => true do |f| %>
+<ul class="rounded">
+  <li>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %><br />
+  </li>
+  <li>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %><br />
+  </li>
+  <%= f.submit "Login" %>
+</ul>
 
-<p> New user? <%= link_to "Sign up now!", signup_path %>
+<button type="submit" class="whiteButton" style="display: block">Login</button>
+<%= link_to "Cancel", root_path, :class => "grayButton" %>
+
+<% end %>
   
