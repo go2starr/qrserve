@@ -12,7 +12,14 @@ class SessionsController < ApplicationController
     else
       # Sign in the user
       sign_in user
-      redirect_to user
+
+      respond_to do |format|
+        format.html { redirect_to user }
+        format.mobile { redirect_to root_path }
+        format.js { redirect_to root_path }
+        format.ajax { redirect_to root_path }
+        format.xhr { redirect_to root_path }
+      end
     end    
   end
 

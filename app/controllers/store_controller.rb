@@ -8,9 +8,11 @@ class StoreController < ApplicationController
       @cart = current_user.cart
       @products = Product.all
       @qr = qrcode(cart_url @cart)
-      
     else
-      redirect_to signin_path
+      respond_to do |format|
+        format.html { redirect_to signin_path }
+        format.mobile
+      end
     end
   end
 end

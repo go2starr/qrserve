@@ -6,6 +6,13 @@ class OrdersController < ApplicationController
   # GET /orders.xml
   def index
     @orders = Order.all
+
+    if params[:user_id]
+      @user = User.find params[:user_id]
+      if @user
+        @orders = @user.orders
+      end
+    end
   end
 
   # GET /orders/1

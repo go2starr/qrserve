@@ -1,0 +1,33 @@
+<% if signed_in? %>
+
+<ul class="rounded">
+  <li class="arrow">
+    <%= link_to "Profile", user_path(current_user) %>
+  </li>
+  <li class="arrow">
+    <%= link_to "Orders", user_orders_path(current_user) %>
+  </li>
+  <li class="arrow">
+    <%= link_to "Create order", '' %>
+  </li>
+</ul>
+
+
+<% else %>
+
+<ul class="rounded">
+  <li class="arrow">
+    <%= link_to "Sign in", signin_path, :method => :new %>
+  </li>
+  <li class="arrow">
+    <%= link_to "Create an account", signup_path %>
+  </li>
+</ul>
+
+
+<% end %>
+
+
+<div class="info">
+  <p> Powered by jQTouch </p>
+</div>

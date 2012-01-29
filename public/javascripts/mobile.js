@@ -1,0 +1,3 @@
+$.jQTouch({
+  formSelector: '.form'
+});

@@ -1,0 +1,15 @@
+<li>Order #<%= order.id %>    <small><%= "Total: $#{order.cart.total}" %></small>
+
+  <!-- Maybe make this hidden unless a button pressed -->
+  <ul class="rounded">
+    <% order.cart.line_items.each do |li| %>
+    <% product = li.product %>
+    <li> 
+      <%= product.title.titlecase %> <small><%= "$#{product.price}" %></small>
+    </li>
+    <% end %>
+  </ul>
+
+</li>
+
+
