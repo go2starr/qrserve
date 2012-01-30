@@ -11,7 +11,7 @@ class LineItemsController < ApplicationController
 
     if @line_item.save!
       flash[:success] = "Product added to cart"
-      redirect_to(root_path)
+      redirect_to new_cart_path
     else
       render :action => "new"
     end

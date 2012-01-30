@@ -1,11 +1,8 @@
 <ul class="rounded">
   <h1>Listing</h1>
   <% @products.each do |product| %>
-  <li class="rounded">
-    <%= product.title %>
-    <short><%= number_to_currency(product.price) %></short>
-    <%= link_to "Add to Cart", line_items_path(:product_id =>
-    product), :method => 'create', :action => 'post' %>
+  <li class="arrow">
+    <%= link_to product.title, line_items_path(:product_id => product), {:action => 'create', :method => :post } %>
   </li>
   <% end %>
   

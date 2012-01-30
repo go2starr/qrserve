@@ -2,7 +2,11 @@
   <h1>Cart</h1>
   <% @cart.line_items.each do |line_item| %>
   <li class="plastic">
-    <%= line_item.product.title %>
+    <% product = line_item.product %>
+    <%= product.title %>
+    <small>
+      <%= "$#{product.price}" %>
+    </small>
   </li>
   <% end %>
 </ul>
