@@ -23,6 +23,7 @@
     <!-- Header -->
     <div class="toolbar">
       <h1><%= @title ||= 'QRPay' %></h1>
+      <a class="button back">Back</a>
 
       <% if signed_in? %>
       <%= link_to "Sign out", signout_path, :method => :delete, :class => "button" %>

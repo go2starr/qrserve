@@ -1,0 +1,11 @@
+<ul class="rounded">
+  <h1>Order:</h1>
+
+  <li>
+  <%= render @cart %>
+  </li>
+  <li>
+    <a href=<%= orders_path(:order => { :cart_id => @cart, :user_id =>
+      @user }) %>>Accept</a>
+  </li>
+</ul>

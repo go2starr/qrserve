@@ -1,0 +1,8 @@
+<ul class="rounded">
+  <h1>Cart</h1>
+  <% @cart.line_items.each do |line_item| %>
+  <li class="plastic">
+    <%= line_item.product.title %>
+  </li>
+  <% end %>
+</ul>

@@ -8,7 +8,7 @@ Qrserve::Application.routes.draw do
   resources :products
   resources :line_items
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :carts, :only => [:show]
+  resources :carts, :only => [:new, :show]
 
 
   get "store/index"

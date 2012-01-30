@@ -1,6 +1,15 @@
 class CartsController < ApplicationController
+  include QrHelper
   include SessionsHelper
   protect_from_forgery
+
+  def new
+    if signed_in?
+      @cart = current_user.cart
+      @products = Product.all
+      @qr = qrcode(cart_url @cart)
+    end
+  end
 
   def show
     @cart = Cart.find(params[:id])
