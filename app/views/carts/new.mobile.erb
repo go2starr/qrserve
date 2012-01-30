@@ -1,7 +1,11 @@
-<%= render @cart %>
+<div id="cart">
+     <%= render @cart %>
+     
+     <%= render :template => '/products/listing' %>
+</div>
 
-<%= render :template => '/products/listing' %>
-
-<%= render :template => '/qr/qr.html.erb' %>
+<div id="qr" class="hidden">
+  <%= render :template => '/qr/qr.html.erb' %>
+</div>
 
 
