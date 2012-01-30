@@ -12,6 +12,7 @@ class CartsController < ApplicationController
   end
 
   def show
+    @title = "Create a Cart"
     @cart = Cart.find(params[:id])
     
     if signed_in?

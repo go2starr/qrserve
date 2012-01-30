@@ -21,6 +21,11 @@ describe CartsController do
       before :each do
         test_sign_in @user
       end
+
+      it "should have the right title" do
+        get :show, :id => @cart
+        assigns(:title).should =~ /cart/i
+      end
       
       it "should be successful" do
         get :show, :id => @cart
