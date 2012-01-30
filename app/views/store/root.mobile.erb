@@ -1,29 +1,58 @@
+
+
 <% if signed_in? %>
-  
-  <ul class="rounded">
-    <li class="arrow">
-      <%= link_to "Profile", user_path(current_user) %>
-    </li>
-    <li class="arrow">
-      <%= link_to "Orders", user_orders_path(current_user) %>
-    </li>
-    <li class="arrow">
-      <%= link_to "Create order", new_cart_path %>
-    </li>
-  </ul>
+
+  <div id="home" class="current">  
+
+    <div class="toolbar">
+      <h1><%= @title ||= 'QRPay' %></h1>
+      <%= link_to "Sign out", signout_path, :method => :delete, :class => "button" %>
+    </div>
+
+    <ul class="rounded">
+      <li class="arrow">
+        <%= link_to "Profile", user_path(current_user) %>
+      </li>
+      <li class="arrow">
+        <%= link_to "Orders", user_orders_path(current_user) %>
+      </li>
+      <li class="arrow">
+        <%= link_to "Create order", new_cart_path %>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+
+
 
 
 <% else %>
 
-  <ul class="rounded">
-    <li class="arrow">
-      <%= link_to "Sign in", signin_path, :method => :new %>
-    </li>
-    <li class="arrow">
-      <%= link_to "Create an account", signup_path %>
-    </li>
-  </ul>
+  <div id="welcome" class="current">
+    <div class="toolbar">
+      <h1><%= @title ||= 'QRPay' %></h1>
+      <%= link_to "Sign in", signin_path, :method => :new, :class => "button slideup" %>
+    </div>      
 
+
+    <ul class="rounded">
+      <li class="arrow">
+        <%= link_to "Sign in", '#signin' %>
+      </li>
+      <li class="arrow">
+        <%= link_to "Create an account", '#signup' %>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Signin -->
+  <%= render :template => '/sessions/new.mobile.erb' %>  
+
+  <!-- Create account -->
+  <%= render :template => '/users/new.mobile.erb' %>
 
 <% end %>
 

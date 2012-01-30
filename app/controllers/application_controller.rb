@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   private
   
   def mobile_device?
+    return true
     if session[:mobile_param]
       session[:mobile_param] == "1"
     else

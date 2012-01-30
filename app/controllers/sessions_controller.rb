@@ -2,6 +2,10 @@ class SessionsController < ApplicationController
   protect_from_forgery
   include SessionsHelper
 
+  def new
+    @title = 'Login'
+  end
+
   def create
     user = User.authenticate(params[:session][:email],
                              params[:session][:password])

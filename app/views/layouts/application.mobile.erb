@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>QRPay</title>
-  <%= stylesheet_link_tag :all %>
+  <head>
+    <title>QRPay</title>
+    <%= stylesheet_link_tag :all %>
 
-  <%= stylesheet_link_tag 'mobile' %>
+    <%= stylesheet_link_tag 'mobile' %>
 
-  <%= stylesheet_link_tag '../jqtouch/themes/css/jqtouch.css' %>
-  <%= javascript_include_tag '../jqtouch/src/lib/zepto.min.js' %>
-  <%= javascript_include_tag '../jqtouch/src/jqtouch.min.js' %>
-  <%= javascript_include_tag 'mobile' %>
+    <%= stylesheet_link_tag '../jqtouch/themes/css/jqtouch.css' %>
+    <%= javascript_include_tag '../jqtouch/src/lib/zepto.min.js' %>
+    <%= javascript_include_tag '../jqtouch/src/jqtouch.min.js' %>
+    <%= javascript_include_tag 'mobile' %>
 
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
 
-
-
-  <div class="current">
-
-    <!-- Header -->
     <div class="toolbar">
       <h1><%= @title ||= 'QRPay' %></h1>
-
+      
       <% if signed_in? %>
-      <%= link_to "Sign out", signout_path, :method => :delete, :class => "button" %>
+        <%= link_to "Sign out", signout_path, :method => :delete, :class => "button" %>
       <% else %>
-      <%= link_to "Sign in", signin_path, :method => :new, :class => "button slideup" %>
+        <%= link_to "Sign in", signin_path, :method => :new, :class => "button slideup" %>
       <% end %>
     </div>
-    
-    <!-- Content -->
+
     <%= yield %>
 
-  </div>
-
-
-</body>
+  </body>
 </html>

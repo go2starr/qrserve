@@ -1,18 +1,27 @@
-<%= form_for :session, :url => sessions_path, :remote => true do |f| %>
-  <ul class="rounded">
-    <li>
-      <%= f.label :email %><br />
-      <%= f.text_field :email %><br />
-    </li>
-    <li>
-      <%= f.label :password %><br />
-      <%= f.password_field :password %><br />
-    </li>
-    <%= f.submit "Login" %>
-  </ul>
+<div id="signin">
+  
+  <div class="toolbar">
+    <h1><%= @title ||= 'QRPay' %></h1>
+    <a class="button back" href='#'>Back</a>
+  </div>
 
-  <button type="submit" class="whiteButton">Login</button>
-  <%= link_to "Cancel", root_path, :class => "grayButton" %>
+  <%= form_for :session, :url => sessions_path, :remote => true do |f|%>
+    <ul class="rounded">
+      <li>
+        <%= f.label :email %><br />
+        <%= f.text_field :email %><br />
+      </li>
+      <li>
+        <%= f.label :password %><br />
+        <%= f.password_field :password %><br />
+      </li>
+    </ul>
 
-<% end %>
+    <ul class="rounded">
+      <li>
+        <%= f.submit "Login" %>
+      </li>
+    </ul>
 
+  <% end %>
+</div>

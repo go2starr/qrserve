@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to user_path @user }
-        format.js
+        format.js   { redirect_to root_path }
       end
       
     else
