@@ -5,13 +5,30 @@ describe UsersController do
 
   describe "GET 'new'" do
     it "should have the right title" do
+      get :new
       assigns(:title).should =~ /create an account/i
+    end
+    
+    it "should be successful" do
+      get :new
+      response.should be_success
+    end
+  end
+
+  describe "GET 'show'" do
+    before :each do
+      @user = Factory :user
+      get :show, :id => @user
     end
     
     it "should be successful" do
       response.should be_success
     end
-  end
+
+    it "should have the right title" do
+      assigns(:title).should =~ /profile/i
+    end
+  end    
   
   describe "POST 'create'" do
     describe "failure" do

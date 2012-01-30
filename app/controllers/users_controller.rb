@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   include SessionsHelper
 
   def new
+    @title = "Create an Account"
     @user = User.new
   end
 
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
-#    @title = "Profile"
+    @title = "Profile"
     @user = User.find params[:id]
   end
 
