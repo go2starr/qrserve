@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
   def index
+    @title = "Orders"
     @orders = Order.all
 
     if params[:user_id]

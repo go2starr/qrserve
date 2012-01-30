@@ -3,6 +3,13 @@ require 'spec_helper'
 describe OrdersController do
   render_views
 
+  describe "GET index" do
+    it "should have the right title" do
+      get :index
+      assigns(:title).should =~ /order/i
+    end
+  end
+
   describe "POST 'create'" do
     before :each do
       @user = Factory :user
