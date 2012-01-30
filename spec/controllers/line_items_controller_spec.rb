@@ -37,7 +37,7 @@ describe LineItemsController do
 
      it "should redirect to the catalog" do
        post :create, @attr
-       response.should redirect_to root_path
+       response.should redirect_to new_cart_path
      end
   end
   

@@ -34,7 +34,7 @@ describe OrdersController do
 
     it "should redirect to the users page" do
       post :create, :order => @attr
-      response.should redirect_to @user
+      response.should redirect_to user_orders_path(@user)
     end
   end
 end
