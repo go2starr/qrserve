@@ -5,7 +5,8 @@ class StoreController < ApplicationController
   # GET /
   def root
     if signed_in?
-      @cart = current_user.cart
+      @user = current_user
+      @cart = @user.cart
       @products = Product.all
       @qr = qrcode(cart_url @cart)
     else

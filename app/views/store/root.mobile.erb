@@ -11,23 +11,39 @@
 
     <ul class="rounded">
       <li class="arrow">
-        <%= link_to "Profile", user_path(current_user) %>
+        <%= link_to "Profile", '#profile' %>
       </li>
       <li class="arrow">
-        <%= link_to "Orders", user_orders_path(current_user) %>
+        <%= link_to "Orders", '#orders' %>
       </li>
       <li class="arrow">
-        <%= link_to "Create order", new_cart_path %>
+        <%= link_to "Create order", '#cart' %>
       </li>
     </ul>
   </div>
 
+  <!-- Profile -->
+  <div id="profile">
+    <div class="toolbar">
+      <h1><%= @title ||= 'QRPay' %></h1>
+      <a class="button back" href='#'>Back</a>
+    </div>
+    <%= render @user %>
+  </div>
 
+  <!-- Orders -->
+  <div id="orders">
+    <div class="toolbar">
+      <h1><%= @title ||= 'QRPay' %></h1>
+      <a class="button back" href='#'>Back</a>
+    </div>
+    <ul class="plastic">
+      <%= render @user.orders %>
+    </ul>
+  </div>
 
-
-
-
-
+  <!-- Cart creation -->
+  <%= render :template => 'carts/new.mobile.erb' %>
 
 <% else %>
 

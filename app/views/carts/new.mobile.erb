@@ -1,10 +1,15 @@
 <div id="cart">
-     <%= render @cart %>
-     
-     <%= render :template => '/products/listing' %>
+  <%= render @cart %>
+  <%= render :template => '/products/listing' %>
+  
+  <ul class="rounded">
+    <li class="arrow">
+      <%= link_to "Complete order", '#qr' %>
+    </li>
+  </ul>
 </div>
 
-<div id="qr" class="hidden">
+<div id="qr">
   <%= render :template => '/qr/qr.html.erb' %>
 </div>
 

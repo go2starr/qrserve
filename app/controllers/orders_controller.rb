@@ -39,7 +39,8 @@ class OrdersController < ApplicationController
       @owner = @order.cart.user
       @owner.cart = @cart
 
-      redirect_to user_orders_path(@order.user)
+      #      redirect_to user_orders_path(@order.user)
+      redirect_to '#orders'
     else
       render :action => "new"
     end
