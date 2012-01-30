@@ -3,7 +3,7 @@ class StoreController < ApplicationController
   include QrHelper
 
   # GET /
-  def index
+  def root
     if signed_in?
       @cart = current_user.cart
       @products = Product.all
