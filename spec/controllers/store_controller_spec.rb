@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe StoreController do
 
-  describe "GET index" do
+  describe "GET root" do
 
     describe "when signed in" do
       before :each do
@@ -11,25 +11,25 @@ describe StoreController do
       end
 
       it "should be successful" do
-        get :index
+        get :root
         response.should be_successful
       end
       
       it "should assign all products to @products" do
         10.times { Factory :product }
-        get :index
+        get :root
         assigns(:products).should == Product.all
       end
       
       it "should assign the user's current cart" do
-        get :index
+        get :root
         assigns(:cart).should == @user.cart
       end
     end
 
     describe "when not signed in" do
       it "should redirect to the signin page" do
-        get :index
+        get :root
         response.should redirect_to signin_path
       end
     end

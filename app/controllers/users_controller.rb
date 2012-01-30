@@ -11,13 +11,19 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in @user
-      redirect_to user_path @user
+
+      respond_to do |format|
+        format.html { redirect_to user_path @user }
+        format.js
+      end
+      
     else
       render 'new'
     end
   end
 
   def show
+#    @title = "Profile"
     @user = User.find params[:id]
   end
 

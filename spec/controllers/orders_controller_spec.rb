@@ -5,8 +5,9 @@ describe OrdersController do
 
   describe "POST 'create'" do
     before :each do
-      @cart = Factory :cart
       @user = Factory :user
+      @cart = @user.cart.build
+      
       @attr = {
         :cart_id => @cart,
         :user_id => @user

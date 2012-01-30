@@ -4,6 +4,10 @@ describe UsersController do
   render_views
 
   describe "GET 'new'" do
+    it "should have the right title" do
+      assigns(:title).should =~ /create an account/i
+    end
+    
     it "should be successful" do
       response.should be_success
     end
