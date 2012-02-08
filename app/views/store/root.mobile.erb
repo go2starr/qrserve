@@ -9,6 +9,13 @@
       <%= link_to "Sign out", signout_path, :method => :delete, :class => "button" %>
     </div>
 
+    <!-- Display flash messages for login -->
+    <% if flash[:notice] %>
+      <ul class="plastic">
+        <li style="background-color:#66FF66; color:white"> <%= flash[:notice] %> </li>
+      </ul>
+    <% end %>        
+
     <ul class="rounded">
       <li class="arrow">
         <%= link_to "Profile", '#profile' %>
@@ -53,7 +60,6 @@
       <%= link_to "Sign in", signin_path, :method => :new, :class => "button slideup" %>
     </div>      
 
-
     <ul class="rounded">
       <li class="arrow">
         <%= link_to "Sign in", '#signin' %>
@@ -62,6 +68,7 @@
         <%= link_to "Create an account", '#signup' %>
       </li>
     </ul>
+
   </div>
 
   <!-- Signin -->

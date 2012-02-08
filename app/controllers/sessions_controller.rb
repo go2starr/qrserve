@@ -29,4 +29,11 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  #### SECRET DEMO LOGIN ####
+  def secret
+    user = User.first
+    sign_in user
+    flash[:notice] = "Signed in!"
+    redirect_to root_path
+  end
 end
