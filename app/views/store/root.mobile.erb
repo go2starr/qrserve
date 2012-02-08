@@ -11,9 +11,7 @@
 
     <!-- Display flash messages for login -->
     <% if flash[:notice] %>
-      <ul class="plastic">
-        <li style="background-color:#66FF66; color:white"> <%= flash[:notice] %> </li>
-      </ul>
+      <li class="greenButton"> <%= flash[:notice] %> </li>
     <% end %>        
 
     <ul class="rounded">
@@ -33,7 +31,6 @@
   <div id="profile">
     <div class="toolbar">
       <h1><%= @title ||= 'QRPay' %></h1>
-      <a class="button back" href='#'>Back</a>
     </div>
     <%= render @user %>
   </div>
@@ -42,10 +39,15 @@
   <div id="orders">
     <div class="toolbar">
       <h1><%= @title ||= 'QRPay' %></h1>
-      <a class="button back" href='#'>Back</a>
     </div>
+    
+    <!-- Flash order completion -->
+    <% if flash[:notice] %>
+      <li class="greenButton"> <%= flash[:notice] %> </li>
+    <% end %>
+    
     <ul class="plastic">
-      <%= render @user.orders %>
+      <%= render (@user.orders.sort_by &:created_at).reverse %>
     </ul>
   </div>
 
@@ -68,7 +70,6 @@
         <%= link_to "Create an account", '#signup' %>
       </li>
     </ul>
-
   </div>
 
   <!-- Signin -->

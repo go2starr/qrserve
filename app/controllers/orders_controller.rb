@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
       @owner.cart = @cart
 
       #      redirect_to user_orders_path(@order.user)
+      flash[:notice] = "Order successful!"
       redirect_to '#orders'
     else
       render :action => "new"

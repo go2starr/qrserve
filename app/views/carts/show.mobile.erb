@@ -6,8 +6,12 @@
       <%= render @cart %>
     </li>
     
-    <li class="arrow">
+    <li class="greenButton">
       <%= link_to "Accept", orders_path(:order => { :cart_id => @cart, :user_id =>@user }), {:action => 'create', :method => :post} %>
+    </li>
+
+    <li class="redButton" >
+      <%= link_to "Cancel", root_path %>
     </li>
   </ul>
 </div>
